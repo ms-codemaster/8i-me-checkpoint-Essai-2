@@ -1,0 +1,47 @@
+ALGORITHM spelling_a_sentence
+VAR
+    SentenceLength, Vowels, Words : INTEGER;
+    i, j, k : INTEGER;
+    SENTENCE : STRING;
+    V : CHAR : {'A', 'E', 'I', 'O', 'U', 'Y', 'a', 'e', 'i', 'o', 'u', 'y', 'à', 'ä', 'é', 'è', 'ê', 'ë', 'ï', 'î', 'ù', 'ô', 'ö'}
+    W : CHAR : {' '}
+    S : CHAR : {'.'}
+    I : INTEGER;
+    T,F : BOOLEAN;
+BEGIN
+    Write ("Please write a sentence that begins with a letter and finishes with a dot ('.').");
+    Read (SENTENCE);
+    
+    FOR i FROM 0 TO (SENTENCE.length-1) DO
+        IF (SENTENCE [0] <> W) THEN
+            IF (SENTENCE [0] <> S) THEN
+                IF (SENTENCE [0] <> I) THEN
+                    IF (SENTENCE [SENTENCE.length-1] = S) THEN
+                    SentenceLength := SENTENCE.length;
+                    T := TRUE;
+                    ELSE
+                    Write ("Please verify that you've written a sentence that begins with a letter and finishes with a dot ('.').");
+                    F := FALSE;
+                    END_IF 
+                END_IF 
+            END_IF 
+        END_IF 
+    END_FOR
+    
+    WHILE (T := TRUE) DO
+        FOR j FROM 0 TO (SENTENCE.length-1) DO
+            IF (SENTENCE [j] = V ) THEN
+                Vowels := Vowels + 1;
+            END_IF
+        END_FOR
+        
+        FOR k FROM 0 TO (SENTENCE.length-1) DO
+            IF (SENTENCE [k] = W ) THEN
+                Words := Words + 1;
+            END_IF
+        END_FOR
+    END_WHILE
+    Write ("The length of the sentence you wrote is :", SentenceLength, ".");
+    Write ("The number of vowels in this sentence is :", Vowels, ".") ;
+    Write ("The number of words in this sentence is :", Words, "." ) ; 
+END
